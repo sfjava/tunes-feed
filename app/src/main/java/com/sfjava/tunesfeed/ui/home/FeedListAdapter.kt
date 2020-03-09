@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sfjava.tunesfeed.databinding.FeedItemBinding
 
-class FeedItemAdapter(private val viewModel: HomeViewModel) : ListAdapter<FeedItem, FeedItemAdapter.ViewHolder>(TaskDiffCallback()) {
+class FeedListAdapter(private val viewModel: FeedListViewModel) : ListAdapter<FeedItem, FeedListAdapter.ViewHolder>(TaskDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -22,9 +22,9 @@ class FeedItemAdapter(private val viewModel: HomeViewModel) : ListAdapter<FeedIt
     class ViewHolder private constructor(val binding: FeedItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(viewModel: HomeViewModel, item: FeedItem) {
+        fun bind(viewModel: FeedListViewModel, item: FeedItem) {
 
-            binding.viewmodel = viewModel
+            // binding.viewmodel = viewModel
             binding.item = item
             binding.executePendingBindings()
         }
@@ -52,6 +52,6 @@ class TaskDiffCallback : DiffUtil.ItemCallback<FeedItem>() {
     }
 
     override fun areContentsTheSame(oldItem: FeedItem, newItem: FeedItem): Boolean {
-        return oldItem.id == newItem.id // FIXME
+        return oldItem == newItem
     }
 }

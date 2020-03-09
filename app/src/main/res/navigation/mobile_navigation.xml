@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.sfjava.tunesfeed.ui.home.HomeFragment"
+        android:name="com.sfjava.tunesfeed.ui.home.FeedListFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_feed_list" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

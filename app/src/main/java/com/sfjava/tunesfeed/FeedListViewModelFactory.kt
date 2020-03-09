@@ -3,16 +3,18 @@ package com.sfjava.tunesfeed
 import androidx.lifecycle.ViewModel
 
 import androidx.lifecycle.ViewModelProvider
+import com.sfjava.tunesfeed.data.FeedItemsRepository
 import com.sfjava.tunesfeed.ui.home.FeedListViewModel
 
-class TunesFeedViewModelFactory(param: String) : ViewModelProvider.Factory {
+class FeedListViewModelFactory(itemsRepository: FeedItemsRepository) : ViewModelProvider.Factory {
 
-    private val mParam: String
+    private val _itemsRepository: FeedItemsRepository
+
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return FeedListViewModel(mParam) as T // mApplication, mParam) as T
+        return FeedListViewModel(_itemsRepository) as T
     }
 
     init {
-        mParam = param
+        _itemsRepository = itemsRepository
     }
 }

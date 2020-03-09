@@ -1,5 +1,7 @@
 package com.sfjava.tunesfeed.ui.home
 
-class FeedItem {
-    val id: Int = 0
+import java.util.*
+
+data class FeedItem(val name: String) {
+    var id: String = UUID.randomUUID().toString()
 }

@@ -7,7 +7,7 @@
         <import type="androidx.core.content.ContextCompat" />
         <variable
             name="viewmodel"
-            type="com.sfjava.tunesfeed.ui.home.HomeViewModel" />
+            type="com.sfjava.tunesfeed.ui.home.FeedListViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,12 +39,6 @@
             android:layout_height="wrap_content"
             app:items="@{viewmodel.items}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/items_list"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,24 +17,15 @@
 package com.sfjava.tunesfeed
 
 import android.app.Application
-import com.example.android.architecture.blueprints.todoapp.data.source.TasksRepository
-import timber.log.Timber
-import timber.log.Timber.DebugTree
+import com.sfjava.tunesfeed.data.FeedItemsRepository
 
-/**
- * An application that lazily provides a repository. Note that this Service Locator pattern is
- * used to simplify the sample. Consider a Dependency Injection framework.
- *
- * Also, sets up Timber in the DEBUG BuildConfig. Read Timber's documentation for production setups.
- */
 class TunesFeedApplication : Application() {
 
-    // Depends on the flavor,
-    val taskRepository: TasksRepository
+    // NOTE: repo impl can depend here on the app flavor... (e.g. for mocking)
+    val itemsRepository: FeedItemsRepository
         get() = ServiceLocator.provideTasksRepository(this)
 
-    override fun onCreate() {
-        super.onCreate()
-        if (BuildConfig.DEBUG) Timber.plant(DebugTree())
-    }
+    // override fun onCreate() {
+    //    super.onCreate()
+    // }
 }
