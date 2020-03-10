@@ -1,17 +1,18 @@
-package com.sfjava.tunesfeed.ui.home
+package com.sfjava.tunesfeed.ui.feeds
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.sfjava.tunesfeed.data.model.FeedItem
 import com.sfjava.tunesfeed.databinding.FeedItemBinding
 
-class FeedListAdapter(private val viewModel: FeedListViewModel) : ListAdapter<FeedItem, FeedListAdapter.ViewHolder>(TaskDiffCallback()) {
+class FeedListAdapter(private val viewModel: FeedListViewModel) :
+    ListAdapter<FeedItem, FeedListAdapter.ViewHolder>(TaskDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-
         holder.bind(viewModel, item)
     }
 
@@ -23,8 +24,7 @@ class FeedListAdapter(private val viewModel: FeedListViewModel) : ListAdapter<Fe
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(viewModel: FeedListViewModel, item: FeedItem) {
-
-            // binding.viewmodel = viewModel
+            // binding.viewmodel = viewModel // NOTE: plumb-through if we need to ref the list-model
             binding.item = item
             binding.executePendingBindings()
         }
@@ -33,7 +33,6 @@ class FeedListAdapter(private val viewModel: FeedListViewModel) : ListAdapter<Fe
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = FeedItemBinding.inflate(layoutInflater, parent, false)
-
                 return ViewHolder(binding)
             }
         }

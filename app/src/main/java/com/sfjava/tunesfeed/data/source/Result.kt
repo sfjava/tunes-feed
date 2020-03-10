@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sfjava.tunesfeed.data
+package com.sfjava.tunesfeed.data.source
 
 /**
  * A generic class that holds a value with its loading status.

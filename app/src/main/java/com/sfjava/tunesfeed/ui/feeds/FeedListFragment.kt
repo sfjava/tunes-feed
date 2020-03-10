@@ -1,4 +1,4 @@
-package com.sfjava.tunesfeed.ui.home
+package com.sfjava.tunesfeed.ui.feeds
 
 import android.os.Bundle
 import android.util.Log
@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.sfjava.tunesfeed.data.model.FeedType
 import com.sfjava.tunesfeed.databinding.FragmentFeedListBinding
-import com.sfjava.tunesfeed.getViewModelFactory
+import com.sfjava.tunesfeed.ui.getViewModelFactory
 
 class FeedListFragment : Fragment() {
 
-    // private lateinit var feedListViewModel: FeedListViewModel
-    private val feedListViewModel by viewModels<FeedListViewModel> { getViewModelFactory() }
+    private val feedListViewModel
+            by viewModels<FeedListViewModel> { getViewModelFactory(arguments?.get("feedType") as FeedType) }
 
     private lateinit var viewDataBinding: FragmentFeedListBinding
     private lateinit var listAdapter: FeedListAdapter
@@ -23,16 +24,6 @@ class FeedListFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-//        feedListViewModel =
-//                ViewModelProviders.of(this, FeedListViewModelFactory("P1")).get(FeedListViewModel::class.java)
-
-//        val root = inflater.inflate(R.layout.fragment_feed_list, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_home)
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
-//        return root
-
         viewDataBinding = FragmentFeedListBinding.inflate(inflater, container, false).apply {
             viewmodel = feedListViewModel
         }

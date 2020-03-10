@@ -5,17 +5,19 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import com.sfjava.tunesfeed.data.FeedItemsRepository
-import com.sfjava.tunesfeed.ui.home.FeedListViewModel
+import com.sfjava.tunesfeed.data.model.FeedType
+import com.sfjava.tunesfeed.data.source.FeedItemsRepository
+import com.sfjava.tunesfeed.ui.feeds.FeedListViewModel
 
 /**
  * Factory for all ViewModels.
  */
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory constructor(
-        private val itemsRepository: FeedItemsRepository,
-        owner: SavedStateRegistryOwner,
-        defaultArgs: Bundle? = null
+    private val feedType: FeedType?,
+    private val itemsRepository: FeedItemsRepository,
+    owner: SavedStateRegistryOwner,
+    defaultArgs: Bundle? = null
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
 
     override fun <T : ViewModel> create(
@@ -25,7 +27,7 @@ class ViewModelFactory constructor(
     ) = with(modelClass) {
         when {
             isAssignableFrom(FeedListViewModel::class.java) ->
-                FeedListViewModel(itemsRepository) //, handle)
+                FeedListViewModel(feedType, itemsRepository) //, handle)
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }

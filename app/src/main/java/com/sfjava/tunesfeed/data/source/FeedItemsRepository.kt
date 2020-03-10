@@ -1,7 +1,7 @@
-package com.sfjava.tunesfeed.data
+package com.sfjava.tunesfeed.data.source
 
 import androidx.lifecycle.LiveData
-import com.sfjava.tunesfeed.ui.home.FeedItem
+import com.sfjava.tunesfeed.data.model.FeedItem
 
 /**
  * Interface to the data layer.
@@ -14,5 +14,5 @@ interface FeedItemsRepository {
 
     suspend fun refreshItems()
 
-//    fun observeItem(id: String): LiveData<Result<FeedItem>>
+    // fun observeItem(id: String): LiveData<Result<FeedItem>>
 }

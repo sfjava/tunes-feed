@@ -1,4 +1,4 @@
-package com.sfjava.tunesfeed.ui.home
+package com.sfjava.tunesfeed.data.model
 
 import java.util.*
 

@@ -3,23 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/feed_coming_soon">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.sfjava.tunesfeed.ui.home.FeedListFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_feed_list" />
+        android:id="@+id/feed_coming_soon"
+        android:name="com.sfjava.tunesfeed.ui.feeds.FeedListFragment"
+        android:label="@string/title_coming_soon"
+        tools:layout="@layout/fragment_feed_list">
+        <argument
+            android:name="feedType"
+            app:argType="com.sfjava.tunesfeed.data.model.FeedType"
+            android:defaultValue="ComingSoon" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.sfjava.tunesfeed.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/feed_hot_tracks"
+        android:name="com.sfjava.tunesfeed.ui.feeds.FeedListFragment"
+        android:label="@string/title_hot_tracks"
+        tools:layout="@layout/fragment_feed_list">
+        <argument
+            android:name="feedType"
+            app:argType="com.sfjava.tunesfeed.data.model.FeedType"
+            android:defaultValue="HotTracks" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.sfjava.tunesfeed.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/feed_new_releases"
+        android:name="com.sfjava.tunesfeed.ui.feeds.FeedListFragment"
+        android:label="@string/title_new_releases"
+        tools:layout="@layout/fragment_feed_list">
+        <argument
+            android:name="feedType"
+            app:argType="com.sfjava.tunesfeed.data.model.FeedType"
+            android:defaultValue="NewReleases" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/feed_top_albums"
+        android:name="com.sfjava.tunesfeed.ui.feeds.FeedListFragment"
+        android:label="@string/title_top_albums"
+        tools:layout="@layout/fragment_feed_list">
+        <argument
+            android:name="feedType"
+            app:argType="com.sfjava.tunesfeed.data.model.FeedType"
+            android:defaultValue="TopAlbums" />
+    </fragment>
+
 </navigation>

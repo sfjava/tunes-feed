@@ -5,7 +5,7 @@
     <data>
         <variable
             name="item"
-            type="com.sfjava.tunesfeed.ui.home.FeedItem" />
+            type="com.sfjava.tunesfeed.data.model.FeedItem" />
     </data>
 
     <LinearLayout

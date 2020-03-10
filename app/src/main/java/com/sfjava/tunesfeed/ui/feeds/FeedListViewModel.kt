@@ -1,18 +1,16 @@
-package com.sfjava.tunesfeed.ui.home
+package com.sfjava.tunesfeed.ui.feeds
 
 import androidx.lifecycle.*
-import com.sfjava.tunesfeed.data.FeedItemsRepository
-import com.sfjava.tunesfeed.data.Result
+import com.sfjava.tunesfeed.data.source.FeedItemsRepository
+import com.sfjava.tunesfeed.data.source.Result
+import com.sfjava.tunesfeed.data.model.FeedItem
+import com.sfjava.tunesfeed.data.model.FeedType
 import kotlinx.coroutines.launch
 
 class FeedListViewModel(
+    private val feedType: FeedType?,
     private val itemsRepository: FeedItemsRepository
 ) : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment $itemsRepository"
-    }
-    val text: LiveData<String> = _text
 
     private val _forceUpdate = MutableLiveData<Boolean>(false)
 
@@ -26,8 +24,7 @@ class FeedListViewModel(
         }
         itemsRepository.observeItems().distinctUntilChanged().switchMap { filterItems(it) }
     }
-
-    val items: LiveData<List<FeedItem>> = _items // MutableLiveData<List<String>>() // FIXME
+    val items: LiveData<List<FeedItem>> = _items
 
     private val _dataLoading = MutableLiveData<Boolean>()
     val dataLoading: LiveData<Boolean> = _dataLoading

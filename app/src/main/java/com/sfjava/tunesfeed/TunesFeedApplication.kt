@@ -17,7 +17,7 @@
 package com.sfjava.tunesfeed
 
 import android.app.Application
-import com.sfjava.tunesfeed.data.FeedItemsRepository
+import com.sfjava.tunesfeed.data.source.FeedItemsRepository
 
 class TunesFeedApplication : Application() {
 

@@ -17,8 +17,8 @@ package com.sfjava.tunesfeed
 
 import android.content.Context
 import androidx.annotation.VisibleForTesting
-import com.sfjava.tunesfeed.data.FeedItemsRepository
-import com.sfjava.tunesfeed.data.MockFeedItemsRepository
+import com.sfjava.tunesfeed.data.source.FeedItemsRepository
+import com.sfjava.tunesfeed.data.source.MockFeedItemsRepository
 
 /**
  * A Service Locator for the [FeedItemsRepository].
