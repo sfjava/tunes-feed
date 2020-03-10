@@ -1,11 +1,14 @@
-### TunesFeed: iTunes RSS Feed Example Android App
+## TunesFeed: iTunes RSS Feed Example Android App
 
 TunesFeed is an example project that demonstrates use of the latest Android Development best-practices
 for UI (JetPack/Lifecycle), Navigation, MVVM (ViewBinding and DataBinding), Kotlin Coroutines, etc.
 
 ![Screenshot](images/tunesFeed-screeshot-topAlbums1-250x.png)
 
-#### Features
+----
+
+### Features & Architectural Considerations
+
  - Leverages approaches from Google's latest **Android Architecture Blueprints** per [https://github.com/android/architecture-samples](https://github.com/android/architecture-samples)
  - A single-activity UI architecture, with Bottom Navigation Bar using the **[Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started)** to manage fragment operations.
  - A **Presentation Layer** that re-uses a single, parameterized fragment and a **ViewModel** per screen or feature; e.g. **FeedListFragment** is parameterized by **FeedType** for UI component re-use.
