@@ -2,7 +2,6 @@ package com.sfjava.tunesfeed.data.source
 
 import com.sfjava.tunesfeed.data.model.FeedItem
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.Transient
 
 @Serializable
 data class FeedResponseDTO(
@@ -17,7 +16,7 @@ data class FeedDescriptionDTO(
 @Serializable
 class FeedResultDTO(
     val name: String,
-    @Transient val artistName: String = "",
+    val artistName: String = "",
     val artworkUrl100: String
 )
 
