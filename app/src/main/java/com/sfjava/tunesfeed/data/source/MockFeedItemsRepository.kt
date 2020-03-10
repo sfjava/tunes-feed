@@ -3,14 +3,17 @@ package com.sfjava.tunesfeed.data.source
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.sfjava.tunesfeed.data.model.FeedItem
+import com.sfjava.tunesfeed.data.model.FeedType
 
-object MockFeedItemsRepository : FeedItemsRepository {
+class MockFeedItemsRepository(feedType: FeedType) : FeedItemsRepository {
 
     private var mockFeedItems =
         listOf(
-            FeedItem("First Item"),
-            FeedItem("Second Item"),
-            FeedItem("Third Item")
+            FeedItem("Item 1: $feedType"),
+            FeedItem("Item 2: $feedType"),
+            FeedItem("Item 3: $feedType"),
+            FeedItem("Item 4: $feedType"),
+            FeedItem("Item 5: $feedType")
         )
 
     private val observableItems = MutableLiveData<Result<List<FeedItem>>>()
@@ -42,4 +45,11 @@ object MockFeedItemsRepository : FeedItemsRepository {
     //        }
     //    }
     // }
+
+//    companion object {
+//        val mockComingSoonFeedItemsRepository = MockFeedItemsRepository(FeedType.ComingSoon)
+//        val mockHotTracksFeedItemsRepository = MockFeedItemsRepository(FeedType.HotTracks)
+//        val mockNewReleasesFeedItemsRepository = MockFeedItemsRepository(FeedType.NewReleases)
+//        val mockTopAlbumsFeedItemsRepository = MockFeedItemsRepository(FeedType.TopAlbums)
+//    }
 }

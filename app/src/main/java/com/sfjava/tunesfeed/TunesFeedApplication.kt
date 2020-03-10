@@ -1,29 +1,14 @@
-/*
- * Copyright (C) 2019 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.sfjava.tunesfeed
 
 import android.app.Application
+import com.sfjava.tunesfeed.data.model.FeedType
 import com.sfjava.tunesfeed.data.source.FeedItemsRepository
 
 class TunesFeedApplication : Application() {
 
     // NOTE: repo impl can depend here on the app flavor... (e.g. for mocking)
-    val itemsRepository: FeedItemsRepository
-        get() = ServiceLocator.provideTasksRepository(this)
+    fun feedItemsRepositoryForType(feedType: FeedType): FeedItemsRepository =
+        ServiceLocator.provideFeedItemsRepository(this, feedType)
 
     // override fun onCreate() {
     //    super.onCreate()

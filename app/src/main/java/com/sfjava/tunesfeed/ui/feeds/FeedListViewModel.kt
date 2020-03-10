@@ -1,14 +1,12 @@
 package com.sfjava.tunesfeed.ui.feeds
 
 import androidx.lifecycle.*
+import com.sfjava.tunesfeed.data.model.FeedItem
 import com.sfjava.tunesfeed.data.source.FeedItemsRepository
 import com.sfjava.tunesfeed.data.source.Result
-import com.sfjava.tunesfeed.data.model.FeedItem
-import com.sfjava.tunesfeed.data.model.FeedType
 import kotlinx.coroutines.launch
 
 class FeedListViewModel(
-    private val feedType: FeedType?,
     private val itemsRepository: FeedItemsRepository
 ) : ViewModel() {
 

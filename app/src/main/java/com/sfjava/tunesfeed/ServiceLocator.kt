@@ -1,44 +1,31 @@
-/*
- * Copyright (C) 2019 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.sfjava.tunesfeed
 
 import android.content.Context
 import androidx.annotation.VisibleForTesting
+import com.sfjava.tunesfeed.data.model.FeedType
 import com.sfjava.tunesfeed.data.source.FeedItemsRepository
 import com.sfjava.tunesfeed.data.source.MockFeedItemsRepository
 
 /**
- * A Service Locator for the [FeedItemsRepository].
+ * A Service Locator providing the [FeedItemsRepository] for each [FeedType].
  *
- * NOTE: This is the MOCK version...
+ * NOTE: This is the MOCK version.
  */
 object ServiceLocator {
 
     @Volatile
-    var itemsRepository: FeedItemsRepository? = null
+    var feedRepositoriesByType: MutableMap<FeedType, FeedItemsRepository> = mutableMapOf()
         @VisibleForTesting set
 
-    fun provideTasksRepository(context: Context): FeedItemsRepository {
+    fun provideFeedItemsRepository(context: Context, feedType: FeedType): FeedItemsRepository {
         synchronized(this) {
-            return itemsRepository ?: itemsRepository ?: createTasksRepository(context)
+            return feedRepositoriesByType[feedType] ?: createFeedItemsRepository(context, feedType)
         }
     }
 
-    private fun createTasksRepository(context: Context): FeedItemsRepository {
-        itemsRepository = MockFeedItemsRepository
-        return itemsRepository as FeedItemsRepository
+    private fun createFeedItemsRepository(context: Context, feedType: FeedType): FeedItemsRepository {
+        return MockFeedItemsRepository(feedType).also {
+            feedRepositoriesByType.put(feedType, it)
+        }
     }
 }

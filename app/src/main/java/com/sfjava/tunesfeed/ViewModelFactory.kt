@@ -5,7 +5,6 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import com.sfjava.tunesfeed.data.model.FeedType
 import com.sfjava.tunesfeed.data.source.FeedItemsRepository
 import com.sfjava.tunesfeed.ui.feeds.FeedListViewModel
 
@@ -14,7 +13,6 @@ import com.sfjava.tunesfeed.ui.feeds.FeedListViewModel
  */
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory constructor(
-    private val feedType: FeedType?,
     private val itemsRepository: FeedItemsRepository,
     owner: SavedStateRegistryOwner,
     defaultArgs: Bundle? = null
@@ -27,7 +25,7 @@ class ViewModelFactory constructor(
     ) = with(modelClass) {
         when {
             isAssignableFrom(FeedListViewModel::class.java) ->
-                FeedListViewModel(feedType, itemsRepository) //, handle)
+                FeedListViewModel(itemsRepository) //, handle) // FIXME: handle state persistence?
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
