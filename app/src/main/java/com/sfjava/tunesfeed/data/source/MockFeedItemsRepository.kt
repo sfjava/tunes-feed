@@ -9,16 +9,16 @@ class MockFeedItemsRepository(val feedType: FeedType) : FeedItemsRepository {
 
     private var mockFeedItems =
         listOf(
-            FeedItem("Item 1: $feedType"),
-            FeedItem("Item 2: $feedType"),
-            FeedItem("Item 3: $feedType"),
-            FeedItem("Item 4: $feedType"),
-            FeedItem("Item 5: $feedType"),
-            FeedItem("Item 6: $feedType"),
-            FeedItem("Item 7: $feedType"),
-            FeedItem("Item 8: $feedType"),
-            FeedItem("Item 9: $feedType"),
-            FeedItem("Item 10: $feedType")
+            FeedItem("Item 1: $feedType", "artistName1", "http://foo.com"),
+            FeedItem("Item 2: $feedType", "artistName2", "http://foo.com"),
+            FeedItem("Item 3: $feedType", "artistName3", "http://foo.com"),
+            FeedItem("Item 4: $feedType", "artistName4", "http://foo.com"),
+            FeedItem("Item 5: $feedType", "artistName5", "http://foo.com"),
+            FeedItem("Item 6: $feedType", "artistName6", "http://foo.com"),
+            FeedItem("Item 7: $feedType", "artistName7", "http://foo.com"),
+            FeedItem("Item 8: $feedType", "artistName8", "http://foo.com"),
+            FeedItem("Item 9: $feedType", "artistName9", "http://foo.com"),
+            FeedItem("Item 10: $feedType", "artistName10", "http://foo.com")
         )
 
     private val observableItems = MutableLiveData<Result<List<FeedItem>>>()

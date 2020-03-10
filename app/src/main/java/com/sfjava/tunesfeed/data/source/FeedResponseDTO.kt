@@ -25,5 +25,5 @@ class FeedResultDTO(
 // transform FeedResult DTO -> FeedItem Entity
 //
 fun FeedResultDTO.toFeedItem(): FeedItem {
-    return FeedItem(name)
+    return FeedItem(name, artistName, artworkUrl100)
 }
