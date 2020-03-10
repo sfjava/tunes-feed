@@ -9,8 +9,6 @@ import com.sfjava.tunesfeed.data.source.ProdFeedItemsRepository
 
 /**
  * A Service Locator providing the [FeedItemsRepository] for each [FeedType].
- *
- * NOTE: This is the MOCK version.
  */
 object ServiceLocator {
 
@@ -25,9 +23,12 @@ object ServiceLocator {
     }
 
     private fun createFeedItemsRepository(context: Context, feedType: FeedType): FeedItemsRepository {
-//        return MockFeedItemsRepository(feedType).also {
-//            feedRepositoriesByType.put(feedType, it)
-//        }
+
+        // TODO: use the MOCKED impl depending on build-flavor and/or when running tests
+        // return MockFeedItemsRepository(feedType).also {
+        //    feedRepositoriesByType.put(feedType, it)
+        // }
+
         return ProdFeedItemsRepository(feedType).also {
             feedRepositoriesByType.put(feedType, it)
         }
