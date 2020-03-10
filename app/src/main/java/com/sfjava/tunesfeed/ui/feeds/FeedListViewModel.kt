@@ -40,7 +40,7 @@ class FeedListViewModel(val itemsRepository: FeedItemsRepository) : ViewModel() 
     }
 
     private fun filterItems(itemsResult: Result<List<FeedItem>>): LiveData<List<FeedItem>> {
-        // TODO: This is a good case for liveData builder. Replace when stable.
+        // TODO: this is a good case for liveData builder; replace when stable (per google's sample)
         val result = MutableLiveData<List<FeedItem>>()
         if (itemsResult is Result.Success) {
             // isDataLoadingError.value = false
