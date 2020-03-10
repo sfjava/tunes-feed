@@ -16,6 +16,8 @@ import retrofit2.Retrofit
 class ProdFeedItemsRepository(val feedType: FeedType) : FeedItemsRepository {
 
     private val RSSBaseUrl = "https://rss.itunes.apple.com/"
+    private val maxItemCount = 50
+
     val api by lazy { retrofit(okhttp(), RSSBaseUrl).create(RSSAppleMusic::class.java) }
 
     private val observableItems = MutableLiveData<Result<List<FeedItem>>>()
@@ -23,7 +25,7 @@ class ProdFeedItemsRepository(val feedType: FeedType) : FeedItemsRepository {
     override fun observeItems(): LiveData<Result<List<FeedItem>>> = observableItems
 
     override suspend fun getItems(forceUpdate: Boolean): Result<List<FeedItem>> {
-        val items = api.fetchItemsFromFeed(feedType.toFeedTypePathSegment(), 10)
+        val items = api.fetchItemsFromFeed(feedType.toFeedTypePathSegment(), maxItemCount)
             .feed
             .results
             .map { it.toFeedItem() }
