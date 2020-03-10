@@ -53,11 +53,4 @@ class MockFeedItemsRepository(val feedType: FeedType) : FeedItemsRepository {
     //        }
     //    }
     // }
-
-//    companion object {
-//        val mockComingSoonFeedItemsRepository = MockFeedItemsRepository(FeedType.ComingSoon)
-//        val mockHotTracksFeedItemsRepository = MockFeedItemsRepository(FeedType.HotTracks)
-//        val mockNewReleasesFeedItemsRepository = MockFeedItemsRepository(FeedType.NewReleases)
-//        val mockTopAlbumsFeedItemsRepository = MockFeedItemsRepository(FeedType.TopAlbums)
-//    }
 }
