@@ -6,9 +6,7 @@ import com.sfjava.tunesfeed.data.source.FeedItemsRepository
 import com.sfjava.tunesfeed.data.source.Result
 import kotlinx.coroutines.launch
 
-class FeedListViewModel(
-    private val itemsRepository: FeedItemsRepository
-) : ViewModel() {
+class FeedListViewModel(val itemsRepository: FeedItemsRepository) : ViewModel() {
 
     private val _forceUpdate = MutableLiveData<Boolean>(false)
 
@@ -26,6 +24,12 @@ class FeedListViewModel(
 
     private val _dataLoading = MutableLiveData<Boolean>()
     val dataLoading: LiveData<Boolean> = _dataLoading
+
+    val empty: LiveData<Boolean> = Transformations.map(_items) {
+        it.isEmpty()
+    }
+
+    val noItemsMessage: String = "No Items."
 
     init {
         loadItems(true)
