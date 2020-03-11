@@ -1,9 +1,10 @@
-package com.sfjava.tunesfeed.ui.feeds
+package com.sfjava.tunesfeed.ui.feedlist
 
 import androidx.lifecycle.*
 import com.sfjava.tunesfeed.data.model.FeedItem
 import com.sfjava.tunesfeed.data.source.FeedItemsRepository
 import com.sfjava.tunesfeed.data.source.Result
+import com.sfjava.tunesfeed.ui.Event
 import kotlinx.coroutines.launch
 
 class FeedListViewModel(val itemsRepository: FeedItemsRepository) : ViewModel() {
@@ -22,6 +23,9 @@ class FeedListViewModel(val itemsRepository: FeedItemsRepository) : ViewModel() 
     }
     val items: LiveData<List<FeedItem>> = _items
 
+    private val _showItemDetailEvent = MutableLiveData<Event<String>>()
+    val showItemDetailEvent: LiveData<Event<String>> = _showItemDetailEvent
+
     private val _dataLoading = MutableLiveData<Boolean>()
     val dataLoading: LiveData<Boolean> = _dataLoading
 
@@ -37,6 +41,12 @@ class FeedListViewModel(val itemsRepository: FeedItemsRepository) : ViewModel() 
 
     fun loadItems(forceUpdate: Boolean) {
         _forceUpdate.value = forceUpdate
+    }
+
+    fun getItem(id: String): FeedItem? = _items.value?.filter { it.id == id }?.firstOrNull()
+
+    fun showItemDetail(id: String) {
+        _showItemDetailEvent.value = Event(id)
     }
 
     private fun filterItems(itemsResult: Result<List<FeedItem>>): LiveData<List<FeedItem>> {

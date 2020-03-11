@@ -6,6 +6,10 @@
         <variable
             name="item"
             type="com.sfjava.tunesfeed.data.model.FeedItem" />
+
+        <variable
+            name="feedListViewModel"
+            type="com.sfjava.tunesfeed.ui.feedlist.FeedListViewModel" />
     </data>
 
     <LinearLayout
@@ -14,8 +18,8 @@
         android:orientation="horizontal"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingBottom="4dp">
-<!--    android:onClick="@{() -> viewmodel.openTask(task.id)}">-->
+        android:paddingBottom="4dp"
+        android:onClick="@{() -> feedListViewModel.showItemDetail(item.id)}">
 
         <ImageView
             android:id="@+id/product_image"
