@@ -1,4 +1,4 @@
-package com.sfjava.tunesfeed.ui.feeds
+package com.sfjava.tunesfeed.ui.feedlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,7 +24,7 @@ class FeedListAdapter(private val viewModel: FeedListViewModel) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(viewModel: FeedListViewModel, item: FeedItem) {
-            // binding.viewmodel = viewModel // NOTE: plumb-through if we need to ref the list-model
+            binding.feedListViewModel = viewModel // NOTE: need to ref this for item on-click action
             binding.item = item
             binding.executePendingBindings()
         }

@@ -7,20 +7,23 @@
 
     <fragment
         android:id="@+id/feed_coming_soon"
-        android:name="com.sfjava.tunesfeed.ui.feeds.FeedListFragment"
+        android:name="com.sfjava.tunesfeed.ui.feedlist.FeedListFragment"
         android:label="@string/title_coming_soon"
-        tools:layout="@layout/fragment_feed_list">
+        tools:layout="@layout/feed_list_fragment">
         <argument
             android:name="feedType"
             app:argType="com.sfjava.tunesfeed.data.model.FeedType"
             android:defaultValue="ComingSoon" />
+        <action
+            android:id="@+id/action_feedListFragment_to_feedItemDetailFragment"
+            app:destination="@id/feed_item_detail_fragment" />
     </fragment>
 
     <fragment
         android:id="@+id/feed_hot_tracks"
-        android:name="com.sfjava.tunesfeed.ui.feeds.FeedListFragment"
+        android:name="com.sfjava.tunesfeed.ui.feedlist.FeedListFragment"
         android:label="@string/title_hot_tracks"
-        tools:layout="@layout/fragment_feed_list">
+        tools:layout="@layout/feed_list_fragment">
         <argument
             android:name="feedType"
             app:argType="com.sfjava.tunesfeed.data.model.FeedType"
@@ -29,9 +32,9 @@
 
     <fragment
         android:id="@+id/feed_new_releases"
-        android:name="com.sfjava.tunesfeed.ui.feeds.FeedListFragment"
+        android:name="com.sfjava.tunesfeed.ui.feedlist.FeedListFragment"
         android:label="@string/title_new_releases"
-        tools:layout="@layout/fragment_feed_list">
+        tools:layout="@layout/feed_list_fragment">
         <argument
             android:name="feedType"
             app:argType="com.sfjava.tunesfeed.data.model.FeedType"
@@ -40,13 +43,22 @@
 
     <fragment
         android:id="@+id/feed_top_albums"
-        android:name="com.sfjava.tunesfeed.ui.feeds.FeedListFragment"
+        android:name="com.sfjava.tunesfeed.ui.feedlist.FeedListFragment"
         android:label="@string/title_top_albums"
-        tools:layout="@layout/fragment_feed_list">
+        tools:layout="@layout/feed_list_fragment">
         <argument
             android:name="feedType"
             app:argType="com.sfjava.tunesfeed.data.model.FeedType"
             android:defaultValue="TopAlbums" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/feed_item_detail_fragment"
+        android:name="com.sfjava.tunesfeed.ui.feeditem.FeedItemDetailFragment"
+        android:label="Item Details">
+        <argument
+            android:name="itemId"
+            app:argType="string" />
     </fragment>
 
 </navigation>

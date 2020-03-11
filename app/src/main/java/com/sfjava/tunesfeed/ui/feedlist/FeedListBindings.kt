@@ -1,4 +1,4 @@
-package com.sfjava.tunesfeed.ui.feeds
+package com.sfjava.tunesfeed.ui.feedlist
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

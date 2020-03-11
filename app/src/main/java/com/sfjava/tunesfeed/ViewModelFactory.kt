@@ -6,7 +6,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
 import com.sfjava.tunesfeed.data.source.FeedItemsRepository
-import com.sfjava.tunesfeed.ui.feeds.FeedListViewModel
+import com.sfjava.tunesfeed.ui.feeditem.FeedItemViewModel
+import com.sfjava.tunesfeed.ui.feedlist.FeedListViewModel
 
 /**
  * Factory for all ViewModels.
@@ -26,6 +27,8 @@ class ViewModelFactory constructor(
         when {
             isAssignableFrom(FeedListViewModel::class.java) ->
                 FeedListViewModel(itemsRepository) //, handle) // FIXME: handle state persistence?
+//            isAssignableFrom(FeedItemViewModel::class.java) ->
+//                FeedItemViewModel(feedListViewModel) //, handle) // FIXME: handle state persistence?
             else ->
                 throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
         }
